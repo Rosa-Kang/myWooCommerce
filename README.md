@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PurelyScrunchies
+
+A headless e-commerce store built with Next.js and WordPress, specializing in premium scrunchies for the Canadian market.
+
+## Tech Stack
+
+- **Frontend**: Next.js 15.4.3 + TypeScript + Tailwind CSS
+- **Backend**: WordPress 6.8.2 + WooCommerce 10.0.4
+- **API**: WooCommerce REST API + Custom endpoints
+- **State Management**: Zustand
+- **Development**: Local by Flywheel
+
+## Features
+
+- Headless WordPress CMS with custom API endpoints
+- Canadian market optimization (CAD currency, tax compliance)
+- Responsive design with Tailwind CSS
+- WooCommerce integration for product management
+- Custom API testing dashboard
+- PayPal payment integration
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- Local by Flywheel (for WordPress backend)
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd purelyscrunchies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Configure environment variables in `.env.local`:
+```bash
+NEXT_PUBLIC_WORDPRESS_URL=http://localhost:10033
+WORDPRESS_API_URL=http://localhost:10033/wp-json/wc/v3
+WC_CONSUMER_KEY=your_consumer_key
+WC_CONSUMER_SECRET=your_consumer_secret
+NEXT_PUBLIC_STORE_CURRENCY=CAD
+NEXT_PUBLIC_STORE_COUNTRY=CA
+```
 
-## Learn More
+5. Start the development server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### WordPress Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Install Local by Flywheel
+2. Create a new WordPress site
+3. Install WooCommerce plugin
+4. Install the custom `headless-api-config` plugin (located in WordPress plugins folder)
+5. Generate WooCommerce REST API keys
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Testing
 
-## Deploy on Vercel
+Visit `/test` to verify all API connections and view sample data.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+├── app/                 # Next.js app directory
+├── lib/                 # Utility functions and API integrations
+│   └── woocommerce.ts   # WooCommerce API wrapper
+├── components/          # React components (to be added)
+├── public/              # Static assets
+└── .env.local          # Environment variables
+```
+
+## Development
+
+- **Frontend**: `npm run dev` (runs on http://localhost:3000)
+- **Backend**: Start WordPress site in Local by Flywheel
+- **API Testing**: http://localhost:3000/test
+
+## Contributing
+
+This is a personal project, but feel free to fork and adapt for your own use.
+
+## License
+
+© 2025 therosessom. All rights reserved.
